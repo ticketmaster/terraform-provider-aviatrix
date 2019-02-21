@@ -197,6 +197,7 @@ func resourceAviatrixGateway() *schema.Resource {
 			},
 			"peering_ha_eip": {
 				Type:     schema.TypeString,
+				Computed: true,
 				Optional: true,
 			},
 			"zone": {
