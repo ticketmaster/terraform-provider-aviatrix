@@ -198,6 +198,7 @@ func resourceAviatrixGateway() *schema.Resource {
 			"peering_ha_eip": {
 				Type:     schema.TypeString,
 				Optional: true,
+				Computed: true,
 			},
 			"zone": {
 				Type:     schema.TypeString,
@@ -627,6 +628,9 @@ func resourceAviatrixGatewayUpdate(d *schema.ResourceData, meta interface{}) err
 	}
 	if d.HasChange("vpn_access") {
 		return fmt.Errorf("updating vpn_access is not allowed")
+	}
+	if d.HasChange("peering_ha_eip") {
+		return fmt.Errorf("updating peering_ha_eip is not allowed")
 	}
 	if d.HasChange("enable_elb") {
 		return fmt.Errorf("updating enable_elb is not allowed")
